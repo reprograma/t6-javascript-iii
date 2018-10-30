@@ -5,9 +5,65 @@
 //
 // Dica: Algoritmo de Luhn.
 
+// 1. limpar o input, deixando so os digitos
+// 2. loopar a sequencia de digitos de tras pra frente
+    // 1. pegar um digito sim e um nao e multiplicar por dois
+    // 2. se for o produto for maior que nove, soma os algarismos
+    // 3. depois disso ai em cima, somar todos
+// 3. pegar soma total, e verificar se modulo 10 e zero
+
 function isValidCreditCard(card) {
-    
+    let clean_card = card.replace(/\D/g, "").split("")
+    // let clean_card = ""
+    // for (const char of card) {
+    //     if (!isNaN(char * 1)) {
+    //         clean_card += char
+    //         // ou...
+    //         // clean_card = clean_card + char
+    //     }
+    //     // ou...
+    //     if (!isNaN(Number(char))) {
+    //     }
+    //     ou...
+    //     if ("0123456789".indexOf(char) !== -1) {
+    //     }
+    // }
+    // ou ...
+    // for (let i = 0; i < card.length; i++) {
+    //     const char = card.charAt(i)
+    // }
+    for (let i = clean_card.length - 2; i >= 0; i -= 2) {
+        let result = (clean_card[i] * 2).toString()
+        if (result.length === 2) {
+            result = parseInt(result[0]) + parseInt(result[1])
+        }
+        clean_card[i] = result
+    }
+    let sum = 0
+    for (const element of clean_card) {
+        sum += parseInt(element)
+    }
+    return sum > 0 && sum % 10 === 0
 }
+
+// ou...
+// function isValidCreditCard(card) {
+//     let clean_card = card.replace(/\D/g, "").split("")
+//     let aux = false
+//     let sum = 0
+//     for (let i = clean_card.length - 1; i >= 0; i--) {
+//         let result = clean_card[i]
+//         if (aux) {
+//             result = (clean_card[i] * 2).toString()
+//             if (result.length === 2) {
+//                 result = parseInt(result[0]) + parseInt(result[1])
+//             }
+//         }
+//         sum += parseInt(result)
+//         aux = !aux
+//     }
+//     return sum > 0 && sum % 10 === 0
+// }
 
 const valid_credit_cards = [
     "799 273 987 13",

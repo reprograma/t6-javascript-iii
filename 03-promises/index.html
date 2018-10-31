@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CEP</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <form>
+        <div class="input-group">
+            <label for="cep">CEP</label>
+            <input name="cep" id="cep" type="text" />
+            <p id="cep-error">Este CEP é inválido.</p>
+        </div>
+        <div class="input-group">
+            <label for="logradouro">Logradouro</label>
+            <input disabled name="logradouro" id="logradouro" type="text" />
+        </div>
+        <div class="input-group">
+            <label for="complemento">Complemento</label>
+            <input disabled name="complemento" id="complemento" type="text" />
+        </div>
+        <div class="input-group">
+            <label for="bairro">Bairro</label>
+            <input disabled name="bairro" id="bairro" type="text" />
+        </div>
+        <div class="input-group">
+            <label for="localidade">Localidade</label>
+            <input disabled name="localidade" id="localidade" type="text" />
+        </div>
+        <div class="input-group">
+            <label for="uf">UF</label>
+            <input disabled name="uf" id="uf" type="text" />
+        </div>
+    </form>
+    <script src="./get_data.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

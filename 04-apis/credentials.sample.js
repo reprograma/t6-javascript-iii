@@ -1,0 +1,1 @@
+const gkey = "<YOUR_API_KEY>"

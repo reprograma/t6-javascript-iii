@@ -1,3 +1,4 @@
 *.css.map
 *.css
 /.sass-cache
+credentials.js

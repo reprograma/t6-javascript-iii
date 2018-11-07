@@ -39,15 +39,14 @@ class Div extends Ponto {
         this.largura = largura
     }
 
-    desenhar() {
-        const body = document.querySelector("body")
+    desenhar(container) {
         this.node = document.createElement("div")
         this.node.style.width = this.largura + "px"
         this.node.style.height = this.altura + "px"
         this.node.style.backgroundColor = this.cor
         this.node.style.left = this.x + "px"
         this.node.style.top = this.y + "px"
-        body.appendChild(this.node)
+        container.appendChild(this.node)
     }
 
     // direcao: up, down, left, right
@@ -68,17 +67,36 @@ class Div extends Ponto {
     }
 }
 
-const div = new Div("beatriz", "lime", 300, 300, 150, 150)
-div.desenhar()
+const container = document.querySelector("main")
+const div0 = new Div("beatriz", "lime", 10, 10, 20, 20)
+div0.desenhar(container)
+const div1 = new Div("wanessa", "red", 40, 40, 20, 20)
+div1.desenhar(container)
+const divs = [div0, div1]
+
+let active
+for (const div of divs) {
+    div.node.addEventListener("click", function (event) {
+        active = div
+    })
+}
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "ArrowUp") {
-        div.mover_na_tela("up", 10)
+        if (active.y > 0) {
+            active.mover_na_tela("up", 10)
+        }
     } else if (event.key === "ArrowDown") {
-        div.mover_na_tela("down", 10)
+        if (active.y < (container.offsetHeight - active.altura)) {
+            active.mover_na_tela("down", 10)
+        }
     } else if (event.key === "ArrowLeft") {
-        div.mover_na_tela("left", 10)
+        if (active.x > 0) {
+            active.mover_na_tela("left", 10)
+        }
     } else if (event.key === "ArrowRight") {
-        div.mover_na_tela("right", 10)
+        if (active.x < (container.offsetWidth - active.largura)) {
+            active.mover_na_tela("right", 10)
+        }
     }
 })

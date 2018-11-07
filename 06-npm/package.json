@@ -1,0 +1,16 @@
+{
+  "name": "06-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass-watch": "sass --watch main.scss:main.css --style=compressed",
+    "sass-build": "sass main.scss:main.css --style=compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.14.3"
+  }
+}
